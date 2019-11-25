@@ -1,4 +1,5 @@
-
+#ifndef BST_HPP
+#define BST_HPP
 
 #include "Node.hpp"
 #include <sstream> 
@@ -23,26 +24,33 @@ class BST
             root=new Node<T>(data);
             return;
         }
+        //std::cout<<"root:"<<root->getData()<<std::endl;
         temp = move(root, data);
         if(data< temp->getData())
         {
            // std::cout<<"SET LEFT=================================="<<std::endl;
             temp->setLeft(new Node<T>(data));
+       // std::cout<<"temp:"<<temp->getData()<<std::endl;
             return;
         }
         else 
         {
            // std::cout<<"SET RIGHT=================================="<<std::endl;
             temp->setRight(new Node<T>(data));
+             //std::cout<<"temp:"<<temp->getData()<<std::endl;
             return;
         }
 }
 
     Node<T>* move(Node<T>* cur, T data)
     {
+        //Node<T>* temp;
        // std::cout<<"MOVES=================================="<<std::endl;
         if(cur->getData()==data)
         {
+           // std::cout<<"cur:"<<cur->getData() <<std::endl;
+        //    in<<"root("<<cur->getData()<<")";
+        //    out<<"root("<<cur->getData()<<")";
             return cur;
         }
         if(data < cur->getData()) 
@@ -53,7 +61,8 @@ class BST
                 return cur;
             }
             cur=cur->getLeft();
-            
+            // in<<"->left("<<cur->getData()<<")";
+            // out<<"->left("<<cur->getData()<<")";
             return move(cur,data);
         }
         else
@@ -64,6 +73,8 @@ class BST
                 return cur;
             }
             cur=cur->getRight();
+            // in<<"->right("<<cur->getData()<<")";
+            // out<<"->right("<<cur->getData()<<")";
             return move(cur,data);
         }
     }
@@ -85,7 +96,7 @@ class BST
 
     }
      std::string search (T data)
-    {
+     {
         std::cout<<"SEARCH=================================="<<std::endl;
          int found =0;
          int notfound=0;
@@ -101,16 +112,20 @@ class BST
         else {
         if(temp->getData()>data) //left bit
         {
+            std::cout<<"LEFT-------------------------------"<<std::endl;
             temp=move(temp,data);
             in<<"->left("<<temp->getData()<<")";
             out<<"->left("<<temp->getData()<<")";
+            temp=move(temp,data);
             found=1;
         }
         else if(temp->getData()<data) //right bit
         {
+            std::cout<<"RIGHT-------------------------------"<<std::endl;
             temp=move(temp,data);
             in<<"->right("<<temp->getData()<<")";
-            out<<"->left("<<temp->getData()<<")";
+            out<<"->right("<<temp->getData()<<")";
+            temp=move(temp,data);
             found=1;
         }
         }
@@ -118,11 +133,14 @@ class BST
             {
                 std::cout<<"PRINT"<<std::endl;
                 return in.str();
+                in.clear();
             }
             else
             {
                 return out.str();
-            }
+                out.clear();
+                out.str("");
+            } 
     } 
     int count(void)
     {
@@ -136,3 +154,5 @@ class BST
     Node<T>* root; 
 
 };
+
+#endif

@@ -59,8 +59,8 @@ TEST(IntBST, BigSearch)
   bst.insert(72);
 
   EXPECT_EQ(15, bst.count());
- /* EXPECT_EQ(bst.search(28), "Found: root(50)->left(25)->right(49)->left(26)->right(48)->left(27)->right(47)->left(28)");
-  EXPECT_EQ(bst.search(72), "Found: root(50)->right(75)->left(51)->right(74)->left(52)->right(73)->left(53)->right(72)"); */
+  EXPECT_EQ(bst.search(28), "Found: root(50)->left(25)->right(49)->left(26)->right(48)->left(27)->right(47)->left(28)");
+  EXPECT_EQ(bst.search(72), "Found: root(50)->right(75)->left(51)->right(74)->left(52)->right(73)->left(53)->right(72)"); 
 }
 
 TEST(IntBST, Remove)
@@ -81,9 +81,9 @@ TEST(StringBST, Insert)
   EXPECT_TRUE(bst.contains("25"));
   EXPECT_TRUE(bst.contains("75"));
 
-  /*EXPECT_EQ(bst.search("50"), "Found: root(50)");
+  EXPECT_EQ(bst.search("50"), "Found: root(50)");
   EXPECT_EQ(bst.search("25"), "Found: root(50)->left(25)");
-  EXPECT_EQ(bst.search("75"), "Found: root(50)->right(75)"); */
+  EXPECT_EQ(bst.search("75"), "Found: root(50)->right(75)"); 
 
   EXPECT_EQ(3, bst.count());
 }
@@ -104,7 +104,7 @@ TEST(StringBST, DoesNotContain)
 
 TEST(StringBST, BigSearch)
 {
-  //std::cout<< "Big Search" << std::endl;
+
   BST<std::string> bst;
   bst.insert("50");
   bst.insert("25");
@@ -114,7 +114,7 @@ TEST(StringBST, BigSearch)
   bst.insert("27");
   bst.insert("47");
   bst.insert("28");
-// std::cout<< "HERE" << std::endl;
+
   bst.insert("75");
   bst.insert("51");
   bst.insert("74");
@@ -124,9 +124,9 @@ TEST(StringBST, BigSearch)
   bst.insert("72");
 
  EXPECT_EQ(15, bst.count());
- /*EXPECT_EQ(bst.search("28"), "Found: root(50)->left(25)->right(49)->left(26)->right(48)->left(27)->right(47)->left(28)");
+ EXPECT_EQ(bst.search("28"), "Found: root(50)->left(25)->right(49)->left(26)->right(48)->left(27)->right(47)->left(28)");
   EXPECT_EQ(bst.search("72"), "Found: root(50)->right(75)->left(51)->right(74)->left(52)->right(73)->left(53)->right(72)"); 
-*/
+
 }
 
 TEST(StringBST, Remove)
