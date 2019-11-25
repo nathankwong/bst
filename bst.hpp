@@ -97,7 +97,9 @@ class BST
     }
      std::string search (T data)
      {
-        std::cout<<"SEARCH=================================="<<std::endl;
+       // std::cout<<"SEARCH=================================="<<std::endl;
+                in.str("");
+                in.clear();
          int found =0;
          int notfound=0;
         Node<T>* temp;
@@ -107,21 +109,26 @@ class BST
         {
             std::cout<<"ROOT-------------------------------"<<std::endl;
             in<<"Found: "<<"root("<<temp->getData()<<")";
+            out<<"Not found: "<<"root"<<temp->getData()<<")";
             found=1;
         }
         else {
         if(temp->getData()>data) //left bit
         {
             std::cout<<"LEFT-------------------------------"<<std::endl;
+            in<<"Found: "<<"root("<<temp->getData()<<")";
+            out<<"Not found: "<<"root("<<temp->getData()<<")";
             temp=move(temp,data);
             in<<"->left("<<temp->getData()<<")";
             out<<"->left("<<temp->getData()<<")";
             temp=move(temp,data);
             found=1;
         }
-        else if(temp->getData()<data) //right bit
+         if(temp->getData()<data) //right bit
         {
             std::cout<<"RIGHT-------------------------------"<<std::endl;
+            in<<"Found: "<<"root("<<temp->getData()<<")";
+            out<<"Not found: "<<"root("<<temp->getData()<<")";
             temp=move(temp,data);
             in<<"->right("<<temp->getData()<<")";
             out<<"->right("<<temp->getData()<<")";
@@ -131,15 +138,16 @@ class BST
         }
             if(contains(data)==1)
             {
-                std::cout<<"PRINT"<<std::endl;
+                std::cout<<"PRINT============================="<<std::endl;
                 return in.str();
-                in.clear();
+                
             }
             else
             {
+                std::cout<<" NOT PRINT============================="<<std::endl;
                 return out.str();
                 out.clear();
-                out.str("");
+             
             } 
     } 
     int count(void)
