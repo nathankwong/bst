@@ -91,6 +91,7 @@ class BST
          int notfound=0;
         Node<T>* temp;
         temp=root;
+        
         if(temp->getData()==data)
         {
             std::cout<<"ROOT-------------------------------"<<std::endl;
@@ -102,16 +103,18 @@ class BST
         {
             temp=move(temp,data);
             in<<"->left("<<temp->getData()<<")";
+            out<<"->left("<<temp->getData()<<")";
             found=1;
         }
         else if(temp->getData()<data) //right bit
         {
             temp=move(temp,data);
             in<<"->right("<<temp->getData()<<")";
+            out<<"->left("<<temp->getData()<<")";
             found=1;
         }
         }
-            if(found==1)
+            if(contains(data)==1)
             {
                 std::cout<<"PRINT"<<std::endl;
                 return in.str();
